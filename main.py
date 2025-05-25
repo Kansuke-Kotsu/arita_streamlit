@@ -33,7 +33,8 @@ if st.session_state.step == "basic":
 elif st.session_state.step == "consent":
     st.markdown("## 情報の取り扱いについての同意確認画面")
     st.write("""
-    当サービスではアップロードされた写真を 30 日以内に自動削除します。
+    当サービスではアップロードされた写真をAIの学習に利用致します。
+    そのため、以下の内容に同意の上でアップロードを行ってください。
     詳細はプライバシーポリシーをご確認ください。
     """)
     agree = st.checkbox("上記に同意します ✅")
