@@ -15,7 +15,7 @@ if "step" not in st.session_state:
 # 1. 基本情報入力
 # ────────────────────────────────────────────────
 if st.session_state.step == "basic":
-    st.markdown("## 基本情報の入力")
+    st.markdown("## 基本情報の入力画面")
 
     with st.form("basic_form", clear_on_submit=False):
         dob = st.date_input("生年月日", value=date(2000, 1, 1), format="YYYY-MM-DD")
@@ -31,14 +31,14 @@ if st.session_state.step == "basic":
 # 2. 同意
 # ────────────────────────────────────────────────
 elif st.session_state.step == "consent":
-    st.markdown("## 写真の取扱いについて")
+    st.markdown("## 情報の取り扱いについての同意確認画面")
     st.write("""
     当サービスではアップロードされた写真を 30 日以内に自動削除します。
     詳細はプライバシーポリシーをご確認ください。
     """)
     agree = st.checkbox("上記に同意します ✅")
 
-    if st.button("画像をアップロードする ▶️", disabled=not agree):
+    if st.button("アップロード画面 ▶️", disabled=not agree):
         st.session_state.step = "upload"
         st.rerun()
 
@@ -51,7 +51,7 @@ elif st.session_state.step == "consent":
 # ────────────────────────────────────────────────
 elif st.session_state.step == "upload":
     st.markdown("## 画像アップロード")
-    st.info("写真を選択せずに **完了** を押すとダミー画像 10 枚がアップされたことになります（開発用）。")
+    st.info("↓一旦そのまま「完了」を押してください（開発用）。")
 
     # 複数ファイルを選べる設定。空でも可。
     files = st.file_uploader("画像を選択（複数可）", type=["jpg", "jpeg", "png"],
